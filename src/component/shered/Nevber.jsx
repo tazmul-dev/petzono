@@ -5,7 +5,8 @@ const Nevber = () => {
     const link = [
         <>
         <li><Link href={'/'} >Home</Link></li>
-        <li><Link href={'/'} >All pet</Link></li>
+        <li><Link href={'/allPets'} >All pet</Link></li>
+        <li><Link href={'/deshboard'} >Deshboard</Link></li>
         </>
     ]
     return (
@@ -30,7 +31,8 @@ const Nevber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <Link className='btn mr-2' href={'/register'}>SingUp</Link>
+                    <Link className='btn' href={'/login'}>LogIn</Link>
                 </div>
             </div>
         </div>
