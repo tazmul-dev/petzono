@@ -1,12 +1,20 @@
+"use client"
+import { authClient } from '@/lib/auth-client';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const Nevber = () => {
+
+ const { data:session } = authClient.useSession()
+
+ const user = session?.user
+//  console.log(user)
     const link = [
         <>
-        <li><Link href={'/'} >Home</Link></li>
-        <li><Link href={'/allPets'} >All pet</Link></li>
-        <li><Link href={'/deshboard'} >Deshboard</Link></li>
+            <li><Link href={'/'} >Home</Link></li>
+            <li><Link href={'/allPets'} >All pet</Link></li>
+            <li><Link href={'/deshboard'} >Deshboard</Link></li>
         </>
     ]
     return (
@@ -20,7 +28,7 @@ const Nevber = () => {
                         <ul
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                          {link}
+                            {link}
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">daisyUI</a>
@@ -31,8 +39,28 @@ const Nevber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link className='btn mr-2' href={'/register'}>SingUp</Link>
-                    <Link className='btn' href={'/login'}>LogIn</Link>
+                    {user? 
+                    <div className="dropdown dropdown-end ">
+                        <div tabIndex={0} role="button" className="btn m-1"> 
+                            <Image
+                            src={user?.image}
+                            alt='profile image'
+                            height={40}
+                            width={40}
+                            className=' rounded-full'
+                            ></Image> <p>⬇️</p></div>
+                        <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                            <li><Link href={"/deshboard"}>Deshboard</Link></li>
+                            <li><button onClick={async()=>{await authClient.signOut();}} className='text-red-500 btn' href={"/deshboard"}>logout</button></li>
+                            
+                            
+                        </ul>
+                    </div> : <div className=''>
+                        <Link className='btn mr-2' href={'/register'}>SingUp</Link>
+                        <Link className='btn' href={'/login'}>LogIn</Link>
+                    </div>}
+                    
+
                 </div>
             </div>
         </div>

@@ -1,11 +1,27 @@
+'use client'
+import { authClient } from '@/lib/auth-client';
 import { Button, Card, FieldError, Form, Input, Label, TextField } from '@heroui/react';
 import React from 'react';
 
 const loginPage = () => {
+    const handelLoginForm = async(e)=>{
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+        const userData = Object.fromEntries(formData.entries())
+       const {email, password} = userData
+        const {data, error} = await authClient.signIn.email({
+            email: email,
+            password: password,
+            callbackURL:'/'
+        })
+        console.log(data, error)
+
+
+    }
     return (
         <div>
                     <Card className='border w-96 mx-auto my-30'>
-                        <Form className="flex w-full flex-col gap-4">
+                        <Form onSubmit={handelLoginForm} className="flex w-full flex-col gap-4">
                            
                             <TextField
                                 isRequired

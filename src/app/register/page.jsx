@@ -2,6 +2,7 @@
 
 import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
+import { redirect } from 'next/navigation';
 import { useState } from 'react';
 
 
@@ -16,7 +17,7 @@ const RegisterPage = () => {
     //  console.log(userData)
     //  console.log(confirmPassword)
 
-     if(password < 6){
+     if(password < 7 ){
         return setError('Password must be at least 6 characters')
      }
       if (!/[A-Z]/.test(password)){
@@ -31,7 +32,7 @@ const RegisterPage = () => {
 
        console.log('user rigistered')
 
-       const {data, error} = await authClient.signUp({
+       const {data, error} = await authClient.signUp.email({
         name: name,
         email:email, 
         password: confirmPassword,
@@ -42,6 +43,11 @@ const RegisterPage = () => {
 
        console.log(data, error)
 
+       if(data){
+        redirect('login')
+       }
+      
+      
     }
 
     
