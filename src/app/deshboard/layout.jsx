@@ -16,7 +16,8 @@ const deshboardLayout = ({ children }) => {
                 <ul className="menu bg-base-200 min-h-full w-80 p-4">
                     {/* Sidebar content here */}
                     <li> <Link href={'/deshboard/addPet'}>AddPet</Link> </li>
-                    <li><a>Sidebar Item 2</a></li>
+                    <li> <Link href={'/deshboard/myListing'}>My Listings</Link></li>
+                    <li> <Link href={'/deshboard/myRequests'}>My Requests</Link></li>
                 </ul>
             </div>
         </div>

@@ -1,10 +1,37 @@
+'use client'
 
+import { authClient } from "@/lib/auth-client";
 
 const addpet = () => {
     
+    const {data:session} = authClient.useSession()
+      const user = session?.user
+    //   console.log(user?.email)
+     
+    const handalAddPet = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        // 'use server'
+        const petData = Object.fromEntries(formData.entries())
+        console.log(petData)
+        
+        const res = await fetch('http://localhost:5000/pets', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(petData)
+        })
+        const data = await res.json()
+        // console.log(data)
+
+        // const petData = Object.fromEntries(formData.entries())
+        // console.log(petData)
+    }
+
     return (
         <div className='p-5'>
-            <form className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-2xl space-y-6">
+            <form onSubmit={handalAddPet} className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-2xl space-y-6">
 
                 <h2 className="text-3xl font-bold text-center">
                     Add Pet
@@ -155,6 +182,20 @@ const addpet = () => {
                             className="w-full border rounded-lg p-3"
                         />
                     </div>
+                    <div className="hidden">
+                        <label className="block mb-2 font-medium">
+                            Status
+                        </label>
+
+                        <input
+                            type="text"
+                            name="status"
+                            value={'Available'}
+                            readOnly
+                            placeholder="Abailable"
+                            className="w-full border rounded-lg p-3"
+                        />
+                    </div>
 
                     {/* Owner Email */}
                     <div className="md:col-span-2">
@@ -163,6 +204,8 @@ const addpet = () => {
                         </label>
 
                         <input
+                            value={user?.email}
+                            readOnly
                             type="email"
                             name="ownerEmail"
                             placeholder="Enter owner email"

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const AllPetCard = ({pet}) => {
-    const {image, _id, petName, species,  location, breed , age } =pet
+    const {image, _id, petName, species,  location, breed , age, status } =pet
     return (
         <div>
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
@@ -18,7 +18,7 @@ const AllPetCard = ({pet}) => {
                     className="w-full h-64 object-cover"
                 />
                 <div  className="absolute left-5 top-5 rounded-full bg-white/90 p-3 shadow-md">
-                    <p>available</p>
+                    <p> {status} </p>
                 </div>
 
                 </div>
