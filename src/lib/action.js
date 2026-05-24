@@ -1,4 +1,5 @@
 import { POST } from "@/app/api/auth/[...all]/route"
+import { revalidatePath } from "next/cache"
 import { Joan } from "next/font/google"
 
 export const addPet = async (formData)=>{
@@ -16,5 +17,19 @@ const res = await fetch('http://localhost:5000/pets',{
 const data = await res.json()
 
 return data
+}
+
+export const deletpet = async(petId)=>{
+    'use server'
+ const res = await fetch(`http://localhost:5000/pets/${petId}`,{
+    method: 'DELETE'
+   })
+   const data = await res.json()
+   console.log(data)
+   if(data?.deletedCount>0){
+    revalidatePath('/deshboard/myListing')
+
+    return data
+   }
 }
 

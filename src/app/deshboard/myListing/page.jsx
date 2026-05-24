@@ -1,4 +1,5 @@
 import MyListCard from "@/component/cards/MyListCard";
+import { deletpet } from "@/lib/action";
 import { auth } from "@/lib/auth";
 import { email } from "better-auth";
 import { headers } from "next/headers";
@@ -22,7 +23,7 @@ const session= await auth.api.getSession({
     return (
         <div>
             <div className="grid grid-cols-3 gap-4">
-                {pets?.map(pet=> <MyListCard pet = {pet} key={pet?._id}></MyListCard>)}
+                {pets?.map(pet=> <MyListCard deleteAction = {deletpet} pet = {pet} key={pet?._id}></MyListCard>)}
             </div>
         </div>
     );

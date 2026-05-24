@@ -1,11 +1,18 @@
+'use client'
+
+
+
 import Image from "next/image";
 import Link from "next/link";
 import { BiMessageSquareEdit, BiPencil } from "react-icons/bi";
 import { BsEye, BsTrash2 } from "react-icons/bs";
 
 
-const MyListCard = ({pet}) => {
-
+const MyListCard = ({pet, deleteAction}) => {
+  const handalDelet = async(petId)=>{
+   await deleteAction(petId)
+  
+  }
     return (
         <div className="overflow-hidden rounded-[2rem] border border-orange-100 bg-white shadow-md transition hover:-translate-y-2 hover:shadow-2xl">
 
@@ -76,7 +83,7 @@ const MyListCard = ({pet}) => {
                     </button>
 
                     {/* Delete */}
-                    <button className="flex items-center justify-center gap-2 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 font-semibold text-red-600 transition hover:bg-red-100">
+                    <button onClick={()=>handalDelet(pet?._id)} className="flex items-center justify-center gap-2 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 font-semibold text-red-600 transition hover:bg-red-100">
                         <BsTrash2 className="h-5 w-5" />
                         Delete
                     </button>
