@@ -58,7 +58,11 @@ const loginPage = () => {
         
                             </div>
                         </Form>
+
+                        <button className='btn'>Google</button>
                     </Card>
+
+
                 </div>
     );
 };

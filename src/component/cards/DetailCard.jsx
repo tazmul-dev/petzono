@@ -1,9 +1,17 @@
+
 import Image from "next/image";
 import AdoptModal from "../modals/AdoptModal";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 
 
-const DetailCard = ({ petData }) => {
+const DetailCard = async({ petData }) => {
+   const session = await auth.api.getSession({
+          headers: await headers()
+      })
+       const email = session?.user?.email
+    console.log(session)
     return (
         <div className="max-w-5xl mx-auto p-6">
 
@@ -111,9 +119,12 @@ const DetailCard = ({ petData }) => {
       </div>
 
       {/* Button */}
-      <button className="w-full bg-black text-white py-4 rounded-2xl text-lg font-semibold hover:opacity-90 duration-300">
-        <AdoptModal></AdoptModal>
-      </button>
+      {petData?.ownerEmail ===  session?.user?.email? 
+       "you This pet owner"
+      :<button className="w-full bg-black text-white py-4 rounded-2xl text-lg font-semibold hover:opacity-90 duration-300">
+        <AdoptModal petData ={petData} session ={session} ></AdoptModal>
+      </button>}
+     
       
 
     </div>

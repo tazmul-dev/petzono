@@ -33,3 +33,10 @@ export const deletpet = async(petId)=>{
    }
 }
 
+export const showRequetAdopt = async(id)=>{
+ 'use server'
+   const res = await fetch(`http://localhost:5000/showRequest/${id}`)
+   const data = await res.json()
+   return data
+ }
+

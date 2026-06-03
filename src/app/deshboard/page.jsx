@@ -1,11 +1,14 @@
+import { revalidatePath } from 'next/cache';
 import React from 'react';
 
-const deshboardPage = () => {
+const deshboardpage = () => {
     return (
-        <div className='min-h-100'>
-           this is  deshboard page
+        <div>
+            
+                
+            
         </div>
     );
 };
 
-export default deshboardPage;
+export default deshboardpage;
