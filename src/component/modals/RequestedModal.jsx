@@ -1,6 +1,9 @@
 "use client"
 
 import { Button, Modal } from "@heroui/react";
+
+
+
 import { useEffect, useState } from "react";
 const RequestedModal = ({petId}) => {
    const [requestData, setRequest] = useState([])
@@ -11,6 +14,24 @@ const RequestedModal = ({petId}) => {
     .then((data)=>setRequest(data))
    },[petId])
 //    console.log(requestData)
+    const handalAdopt = async(id)=>{
+    //   console.log("adopt")
+      const res = await fetch(`http://localhost:5000/requestAddopt/${id}`,{
+        method:'PATCH'
+      })
+      const data = await res.json()
+    //   console.log(data.success)
+    if (data.success) {
+  const res = await fetch(
+    `http://localhost:5000/showRequest/${petId}`
+  );
+
+  const updatedData = await res.json();
+  const addoptData = updatedData.filter(data=> data.status ==="approved")
+  setRequest(addoptData);
+}
+    }
+
     return (
         <Modal>
             <Button variant="" className={'bg-red-500'}>Request Adopt</Button>
@@ -28,45 +49,26 @@ const RequestedModal = ({petId}) => {
                         <Modal.Body>
                                 {requestData.map(data =>{
                                     console.log(data)
-                                    return <div key={data?._id} className="rounded-[2rem] border border-orange-100 bg-white p-6 shadow-md">
+                                    return <div key={data?._id} className="my-4 rounded-[2rem] border border-orange-100 bg-white p-6 shadow-md">
 
                                 {/* Title */}
-                                <div className="mb-6">
-                                    <p className="text-end">{data?.status}</p>
+                                <div className="mb-4 flex justify-between items-center">
+                                   
                                     <h2 className="text-2xl font-extrabold text-gray-900">
                                        {data?.petName}
                                     </h2>
+                                     <p className="">{data?.status}</p>
 
-                                    <p className="mt-1 text-gray-500">
-                                        Review and manage this adoption request.
-                                    </p>
                                 </div>
 
                                 {/* User Info */}
                                 <div className="space-y-4">
 
                                     {/* Requested User Name */}
-                                    <div>
-                                        <p className="text-sm font-medium text-gray-500">
-                                            Requested User Name
-                                        </p>
-
-                                        <h3 className="mt-1 text-lg font-semibold text-gray-900">
-                                            John Doe
-                                        </h3>
-                                    </div>
+                                   
 
                                     {/* Requested User Email */}
-                                    <div>
-                                        <p className="text-sm font-medium text-gray-500">
-                                            Requested User Email
-                                        </p>
-
-                                        <h3 className="mt-1 text-lg font-semibold text-gray-900">
-                                            johndoe@gmail.com
-                                        </h3>
-                                    </div>
-
+                                   
                                     {/* Pickup Date */}
                                     <div>
                                         <p className="text-sm font-medium text-gray-500">
@@ -83,7 +85,7 @@ const RequestedModal = ({petId}) => {
                                 <div className="mt-8 grid grid-cols-2 gap-4">
 
                                     {/* Approve */}
-                                    <button className="rounded-2xl bg-green-500 px-5 py-3 font-semibold text-white transition hover:bg-green-600">
+                                    <button onClick={()=>handalAdopt(data?._id)} className="rounded-2xl bg-green-500 px-5 py-3 font-semibold text-white transition hover:bg-green-600">
                                         Approve
                                     </button>
 
