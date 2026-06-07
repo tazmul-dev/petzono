@@ -33,7 +33,18 @@ const RequestedModal = ({petId}) => {
     }
 
     const handaleReject = async(id)=>{
+         const res = await fetch(`http://localhost:5000/requestReject/${id}`,{
+        method:'PATCH'
+      })
+        if (data.success) {
+  const res = await fetch(
+    `http://localhost:5000/showRequest/${petId}`
+  );
 
+  const updatedData = await res.json();
+//   const addoptData = updatedData.filter(data=> data.status ==="rejected")
+//   setRequest(addoptData);
+}
     }
 
     return (
@@ -94,7 +105,7 @@ const RequestedModal = ({petId}) => {
                                     </button>
 
                                     {/* Reject */}
-                                    <button onClick={()=>handaleReject(data?._id)}  className="rounded-2xl bg-red-500 px-5 py-3 font-semibold text-white transition hover:bg-red-600">
+                                    <button onClick={()=>handaleReject(data?._id)} className="rounded-2xl bg-red-500 px-5 py-3 font-semibold text-white transition hover:bg-red-600">
                                         Reject
                                     </button>
                                 </div> : ""}

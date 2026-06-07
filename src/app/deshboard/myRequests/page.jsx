@@ -1,6 +1,7 @@
 
 
 import MyRequestCard from '@/component/cards/MyRequestCard';
+import { deletMyRequest } from '@/lib/action';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 
@@ -21,7 +22,7 @@ const myRequestsPage = async() => {
     return (
     
        <div>
-        {data.map(d=> <MyRequestCard key={d?._id} data={d}></MyRequestCard>)}
+        {data.map(d=> <MyRequestCard key={d?._id} data={d} deletMyRequest={deletMyRequest}></MyRequestCard>)}
        
        </div>
 

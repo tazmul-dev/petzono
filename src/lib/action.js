@@ -1,6 +1,6 @@
-import { POST } from "@/app/api/auth/[...all]/route"
+
 import { revalidatePath } from "next/cache"
-import { Joan } from "next/font/google"
+
 
 export const addPet = async (formData)=>{
 'use server'
@@ -33,6 +33,7 @@ export const deletpet = async(petId)=>{
    }
 }
 
+
 export const showRequetAdopt = async(id)=>{
  'use server'
    const res = await fetch(`http://localhost:5000/showRequest/${id}`)
@@ -40,3 +41,16 @@ export const showRequetAdopt = async(id)=>{
    return data
  }
 
+export const deletMyRequest = async(id)=>{
+    'use server'
+  const res = await fetch(`http://localhost:5000/myRequest/${id}`,{
+    method: 'DELETE'
+  })
+  const data = await res.json()
+  if(data?.deletedCount>0){
+    revalidatePath('/deshboard/myRequests')
+
+    return data
+   }
+ 
+}
