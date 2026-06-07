@@ -32,9 +32,13 @@ const RequestedModal = ({petId}) => {
 }
     }
 
+    const handaleReject = async(id)=>{
+
+    }
+
     return (
         <Modal>
-            <Button variant="" className={'bg-red-500'}>Request Adopt</Button>
+            <Button variant="" className={'bg-black text-white'}>Request Adopt</Button>
             <Modal.Backdrop>
                 <Modal.Container>
                     <Modal.Dialog className="sm:max-w-[360px]">
@@ -62,13 +66,13 @@ const RequestedModal = ({petId}) => {
                                 </div>
 
                                 {/* User Info */}
-                                <div className="space-y-4">
+                                <div className="space-y-2">
 
                                     {/* Requested User Name */}
-                                   
+                                     <p>user Name: {data?.UserName}</p>
 
                                     {/* Requested User Email */}
-                                   
+                                    <p><span>Email</span> {data?.email} </p>
                                     {/* Pickup Date */}
                                     <div>
                                         <p className="text-sm font-medium text-gray-500">
@@ -76,13 +80,13 @@ const RequestedModal = ({petId}) => {
                                         </p>
 
                                         <h3 className="mt-1 text-lg font-semibold text-gray-900">
-                                            25 July 2026
+                                            {data?.pikupDate}
                                         </h3>
                                     </div>
                                 </div>
 
                                 {/* Buttons */}
-                                <div className="mt-8 grid grid-cols-2 gap-4">
+                                {data.status === 'Pending'?  <div className="mt-8 grid grid-cols-2 gap-4">
 
                                     {/* Approve */}
                                     <button onClick={()=>handalAdopt(data?._id)} className="rounded-2xl bg-green-500 px-5 py-3 font-semibold text-white transition hover:bg-green-600">
@@ -90,11 +94,12 @@ const RequestedModal = ({petId}) => {
                                     </button>
 
                                     {/* Reject */}
-                                    <button className="rounded-2xl bg-red-500 px-5 py-3 font-semibold text-white transition hover:bg-red-600">
+                                    <button onClick={()=>handaleReject(data?._id)}  className="rounded-2xl bg-red-500 px-5 py-3 font-semibold text-white transition hover:bg-red-600">
                                         Reject
                                     </button>
-                                </div>
-                            </div>
+                                </div> : ""}
+                               
+                              </div>
                                 })}
                             
                         </Modal.Body>

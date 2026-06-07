@@ -22,8 +22,8 @@ const myListingPage = async () => {
     const pets = await res.json()
     // console.log(pets)
     const availbale = pets.filter(pet => pet.status === 'Available')
-    const adopted = pets.filter(pet => pet.status === 'Adopted')
-     const showRequet = await showRequetAdopt()
+    const adopted = pets.filter(pet => pet.status ==='Addopted')
+     
   
     return (
         <div className="constaner mx-auto">
