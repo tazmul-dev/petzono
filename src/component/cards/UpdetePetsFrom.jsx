@@ -2,20 +2,35 @@
  import Link from 'next/link';
 import React from 'react';
 import { FaArrowsLeftRight } from 'react-icons/fa6';
+import { toast } from 'react-toastify';
 
 const UpdetePetsFrom = ({pet}) => {
-    const handalePetUpdete = (e)=>{
+    const handalePetUpdete = async(e, id)=>{
         e.preventDefault()
          const formData = new FormData(e.currentTarget);
-        // 'use server'
+      
         const petData = Object.fromEntries(formData.entries())
-        console.log(petData)
+       
+
+        const res = await fetch(`http://localhost:5000/petsUpdete/${id}`,{
+            method: 'PATCH',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(petData)
+        })
+        const data = await res.json()
+        // console.log(data)
+
+       toast.success("Updete success")
+
+
     }
     return (
          <div className='p-5'>
             <Link className='btn' href={'/deshboard/myListing'}> <FaArrowsLeftRight /> Go back</Link>
 
-             <form onSubmit={handalePetUpdete} className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-2xl space-y-6">
+             <form onSubmit={(e)=>handalePetUpdete(e,pet?._id)} className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-2xl space-y-6">
 
                 <h2 className="text-3xl font-bold text-center">
                     Add Pet

@@ -1,6 +1,9 @@
 'use client'
 
 import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+
+import { toast } from "react-toastify";
 
 const addpet = () => {
     
@@ -13,7 +16,7 @@ const addpet = () => {
         const formData = new FormData(e.currentTarget);
         // 'use server'
         const petData = Object.fromEntries(formData.entries())
-        console.log(petData)
+        // console.log(petData)
         
         const res = await fetch('http://localhost:5000/pets', {
             method: "POST",
@@ -23,6 +26,15 @@ const addpet = () => {
             body: JSON.stringify(petData)
         })
         const data = await res.json()
+
+        if(data){
+            toast.success("add success")
+            redirect('/deshboard/myListing')
+        }
+        if(!data){
+            toast.error('not added')
+        }
+
         // console.log(data)
 
         // const petData = Object.fromEntries(formData.entries())

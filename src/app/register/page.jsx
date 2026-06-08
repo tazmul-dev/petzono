@@ -2,6 +2,7 @@
 
 import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { useState } from 'react';
 
@@ -44,9 +45,14 @@ const RegisterPage = () => {
        console.log(data, error)
 
        if(data){
-        redirect('login')
+        redirect('/login')
        }
-      
+      if(error){
+           toast.error("This email alrady registerd")
+        }
+        if(data){
+            toast.success('success registar')
+        }
       
     }
 
@@ -120,7 +126,9 @@ const RegisterPage = () => {
 
                     </div>
                 </Form>
+                <p>If your are alrady regitered user pless <Link className='font-bold' href={'/login'}>Login</Link> </p>
             </Card>
+
         </div>
     );
 };

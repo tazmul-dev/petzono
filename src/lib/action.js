@@ -19,6 +19,19 @@ const data = await res.json()
 return data
 }
 
+//  export const updetePet = async()=>{
+
+//   const res = await fetch(`http://localhost:5000/petsUpdete/${id}`,{
+//             method: 'PATCH',
+//             headers:{
+//                 'content-type': 'application/json'
+//             },
+//             body: JSON.stringify(petData)
+//         })
+//         const data = await res.json()
+//         return data
+//  }
+
 export const deletpet = async(petId)=>{
     'use server'
  const res = await fetch(`http://localhost:5000/pets/${petId}`,{

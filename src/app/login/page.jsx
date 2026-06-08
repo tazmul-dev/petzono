@@ -1,7 +1,9 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
 import { Button, Card, FieldError, Form, Input, Label, TextField } from '@heroui/react';
+import Link from 'next/link';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const loginPage = () => {
     const handelLoginForm = async(e)=>{
@@ -14,10 +16,24 @@ const loginPage = () => {
             password: password,
             callbackURL:'/'
         })
-        console.log(data, error)
+        // console.log(data, error)
+        if(error){
+           toast.error('Invalid email or passwor')
+        }
+        if(data){
+            toast.success("Login success")
+        }
 
 
     }
+
+    const handalGoogleLogin = async()=>{
+        const data = await authClient.signIn.social({
+              provider: "google",
+        })
+    }
+
+
     return (
         <div>
                     <Card className='border w-96 mx-auto my-30'>
@@ -59,7 +75,9 @@ const loginPage = () => {
                             </div>
                         </Form>
 
-                        <button className='btn'>Google</button>
+                        <button onClick={handalGoogleLogin} className='btn'>Google</button>
+
+                        <p>If you are not registered user pless: <Link className='font-bold'  href={'/register'}>Register</Link></p>
                     </Card>
 
 

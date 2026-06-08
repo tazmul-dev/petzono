@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import logo from '@/assert/logo.png'
+import { redirect } from 'next/navigation';
 
 const Nevber = () => {
 
@@ -61,7 +62,7 @@ const Nevber = () => {
                             ></Image> <p>⬇️</p></div>
                         <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                             <li><Link href={"/deshboard"}>Deshboard</Link></li>
-                            <li><button onClick={async()=>{await authClient.signOut();}} className='text-red-500 btn' href={"/deshboard"}>logout</button></li>
+                            <li><button onClick={async()=>{await authClient.signOut();redirect("/login")}} className='text-red-500 btn' href={"/deshboard"}>logout</button></li>
                             
                             
                         </ul>
