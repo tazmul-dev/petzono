@@ -3,6 +3,7 @@ import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import logo from '@/assert/logo.png'
 
 const Nevber = () => {
 
@@ -31,7 +32,16 @@ const Nevber = () => {
                             {link}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                   <div className='flex items-center'>
+                    <Image
+                    src={logo}
+                    alt='logo'
+                    width={60}
+                    height={60}
+                    ></Image>
+                    <p className='font-bold text-xl'>PetZono</p>
+                   </div>
+                   
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

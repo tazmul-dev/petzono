@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BiMessageSquareEdit, BiPencil } from "react-icons/bi";
 import { BsEye, BsTrash2 } from "react-icons/bs";
-import UpdetePetModal from "../modals/UpdetePetModal";
+
 import RequestedModal from "../modals/RequestedModal";
 
 
@@ -15,7 +15,7 @@ import RequestedModal from "../modals/RequestedModal";
 const MyListCard = ({ pet, deleteAction}) => {
   
   
-  
+//   console.log(pet)
 
     // const showRequest = showRequetAdopt(pet?._id)
     const handalDelet = async (petId) => {
@@ -89,12 +89,11 @@ const MyListCard = ({ pet, deleteAction}) => {
                     </Link>
 
                     {/* Edit */}
-                    {/* <Link href={'/deshboard/updetePet'} className="flex items-center justify-center gap-2 rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 font-semibold text-blue-600 transition hover:bg-blue-100">
+                    <Link href={`/deshboard/myListing/${pet?._id}`} className="flex items-center justify-center gap-2 rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 font-semibold text-blue-600 transition hover:bg-blue-100">
                         <BiPencil className="h-5 w-5" />
                         Edit
-                    </Link> */}
-                    <UpdetePetModal></UpdetePetModal>
-
+                    </Link>
+                    
                     {/* Delete */}
                     <div className="flex items-center justify-center gap-2 rounded-2xl">
                         

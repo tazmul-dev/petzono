@@ -45,10 +45,13 @@ const MyRequestCard = ({ data, deletMyRequest }) => {
               View
             </Link>
 
+            {data?.status==="approved"? '' :
             <button onClick={()=>handalDeleteMyRequest(data?._id)} className="flex items-center gap-2 rounded-xl bg-red-500 px-5 py-3 font-medium text-white transition hover:bg-red-600">
               <BsXCircle size={18} />
               Cancel
             </button>
+            }
+            
           </div>
         </div>
       </div>

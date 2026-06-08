@@ -12,8 +12,9 @@ const AllpetsPage = () => {
     const [search, setSearch] = useState('')
     const [species, setSpecies] = useState('')
     const [dataSpecies, setDataSpecies] = useState([])
+    console.log(process.env.BETTER_AUTH_URL)
 
-
+   
     useEffect(() => {
         fetch(`http://localhost:5000/pets?search=${search}&species=${species}`)
             .then(res => res.json())
@@ -29,7 +30,7 @@ const AllpetsPage = () => {
     }, [search, species])
     // console.log(dataSpecies)
     const speciesList = [...new Set(dataSpecies.map(pet => pet.species))];
-    console.log(species)
+    // console.log(species)
     return (
 
 

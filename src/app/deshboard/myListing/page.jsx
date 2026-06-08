@@ -18,7 +18,7 @@ const myListingPage = async () => {
     const email = session?.user?.email
     // console.log(email)
 
-    const res = await fetch(`http://localhost:5000/myListing/${session?.user?.email}`)
+    const res = await fetch(`${process.env.PUBLIC_NEXT_SERVER_URI}/myListing/${session?.user?.email}`)
     const pets = await res.json()
     // console.log(pets)
     const availbale = pets.filter(pet => pet.status === 'Available')
