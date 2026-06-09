@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+## Project Name: PetZono.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Purpose:
+PawNest is a pet adoption platform designed to connect pets in need of loving homes with responsible adopters. The platform allows users to browse available pets, view detailed information, submit adoption requests, and manage their adoption journey. It also enables pet owners and shelters to manage listings and adoption requests efficiently, creating a safe and transparent adoption process.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Browse all available pets with search and filter functionality.
+- View detailed pet profiles before submitting an adoption request.
+- Secure user authentication with Email/Password and Google Login.
+- Add, update, and delete pet listings from the dashboard.
+- Submit, track, and cancel adoption requests.
+- Approve or reject adoption requests as a pet owner.
+- Fully responsive design for mobile, tablet, and desktop devices.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## NPM Packages Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Client Side
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- next
+- react
+- react-dom
+- framer-motion
+- tailwindcss
+- daisyUi
+- tostify
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Server Side
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- express
+- mongodb
+- cors
+- dotenv
+- nodemon
+
+
+## Live URL:
+
+https://petzono.vercel.app

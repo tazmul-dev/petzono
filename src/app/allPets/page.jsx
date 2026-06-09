@@ -12,7 +12,7 @@ const AllpetsPage = () => {
     const [search, setSearch] = useState('')
     const [species, setSpecies] = useState('')
     const [dataSpecies, setDataSpecies] = useState([])
-    console.log(process.env.BETTER_AUTH_URL)
+    // console.log(process.env.BETTER_AUTH_URL)
 
    
     useEffect(() => {

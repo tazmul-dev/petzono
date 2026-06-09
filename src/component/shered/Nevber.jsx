@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 import logo from '@/assert/logo.png'
 import { redirect } from 'next/navigation';
+import NevLink from './NevLink';
 
 const Nevber = () => {
 
@@ -14,9 +15,9 @@ const Nevber = () => {
 //  console.log(user)
     const link = [
         <>
-            <li><Link href={'/'} >Home</Link></li>
-            <li><Link href={'/allPets'} >All pet</Link></li>
-            <li><Link href={'/deshboard'} >Deshboard</Link></li>
+            <li><NevLink href={'/'} >Home</NevLink></li>
+            <li><NevLink href={'/allPets'} >All pet</NevLink></li>
+            <li><NevLink href={'/deshboard'} >Deshboard</NevLink></li>
         </>
     ]
     return (
