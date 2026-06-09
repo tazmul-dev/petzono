@@ -15,7 +15,7 @@ const myRequestsPage = async() => {
       const email = session?.user?.email
       console.log(email)
       
-      const res = await fetch(`http://localhost:5000/myRequest/${session?.user?.email}`)
+      const res = await fetch(`https://petzeno-server.vercel.app/myRequest/${session?.user?.email}`)
       const data = await res.json()
       console.log(data)
     

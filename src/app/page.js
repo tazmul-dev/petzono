@@ -8,7 +8,7 @@ import WhyAdoptPets from "@/component/homepage/WhyAdoptPets";
 
 
 export default async function Home() {
-  const res = await fetch('http://localhost:5000/futured')
+  const res = await fetch('https://petzeno-server.vercel.app/futured')
   const pets = await res.json()
   console.log(pets)
   return (

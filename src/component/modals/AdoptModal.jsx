@@ -8,7 +8,7 @@ const AdoptModal = ({petData, session}) => {
         const adoptData = Object.fromEntries(formData.entries())
         console.log(adoptData)
 
-        const res = await fetch('http://localhost:5000/adoptRequest',{
+        const res = await fetch('https://petzeno-server.vercel.app/adoptRequest',{
             method: "POST",
             headers: {
                 'Content-type': 'application/json'

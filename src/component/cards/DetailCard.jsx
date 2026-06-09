@@ -11,7 +11,7 @@ const DetailCard = async({ petData }) => {
           headers: await headers()
       })
        const email = session?.user?.email
-    console.log(session)
+    // console.log(session)
     return (
         <div className="max-w-5xl mx-auto p-6">
 
@@ -22,9 +22,8 @@ const DetailCard = async({ petData }) => {
       <Image
       width={300}
       height={300}
-
-        src={petData?.image}
-        alt="Pet"
+      src={petData?.image}
+       alt="Pet"
         className="w-full h-100 object-cover "
       />
     </div>
@@ -119,9 +118,10 @@ const DetailCard = async({ petData }) => {
       </div>
 
       {/* Button */}
+     
       {petData?.ownerEmail ===  session?.user?.email? 
-       "you This pet owner"
-      :<button className="w-full bg-black text-white py-4 rounded-2xl text-lg font-semibold hover:opacity-90 duration-300">
+       <p className="bg-red-400 text-center">You are this pet owner. You can not adopt this pet</p>
+      :  <button className="w-full bg-black text-white py-4 rounded-2xl text-lg font-semibold hover:opacity-90 duration-300">
         <AdoptModal petData ={petData} session ={session} ></AdoptModal>
       </button>}
      

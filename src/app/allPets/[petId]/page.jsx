@@ -10,7 +10,7 @@ const petDetailsPage = async({params}) => {
         headers: await headers()
     })
     // console.log(token)
-    const res = await fetch(`http://localhost:5000/pets/${petId}`,{
+    const res = await fetch(`https://petzeno-server.vercel.app/pets/${petId}`,{
         headers:{
             authorization: `Bearer ${token}`
         }

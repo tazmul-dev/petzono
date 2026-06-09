@@ -17,7 +17,7 @@ const Footer = () => {
           
           {/* Brand */}
           <div>
-            <h2 className="text-2xl font-bold text-white">PawNest</h2>
+            <h2 className="text-2xl font-bold text-white">PetZono</h2>
             <p className="mt-4 text-gray-400">
               A platform where loving pets find forever homes. Adopt, care, and
               share happiness.
@@ -31,7 +31,7 @@ const Footer = () => {
             <div className="mt-5 space-y-4 text-gray-400">
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-orange-500" />
-                <span>Bera, Rajshahi, Bangladesh</span>
+                <span>pabna, Rajshahi, Bangladesh</span>
               </div>
 
               <div className="flex items-center gap-3">

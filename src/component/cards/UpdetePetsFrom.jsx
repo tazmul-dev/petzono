@@ -12,7 +12,7 @@ const UpdetePetsFrom = ({pet}) => {
         const petData = Object.fromEntries(formData.entries())
        
 
-        const res = await fetch(`http://localhost:5000/petsUpdete/${id}`,{
+        const res = await fetch(`https://petzeno-server.vercel.app/petsUpdete/${id}`,{
             method: 'PATCH',
             headers:{
                 'content-type': 'application/json'

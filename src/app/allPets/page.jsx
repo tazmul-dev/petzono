@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 
 const AllpetsPage = () => {
-    // const res = await fetch('http://localhost:5000/pets')
+    // const res = await fetch('https://petzeno-server.vercel.app/pets')
     // const pets = await res.json()
     // console.log(pets)
     const [pets, setPets] = useState([])
@@ -16,11 +16,11 @@ const AllpetsPage = () => {
 
    
     useEffect(() => {
-        fetch(`http://localhost:5000/pets?search=${search}&species=${species}`)
+        fetch(`https://petzeno-server.vercel.app/pets?search=${search}&species=${species}`)
             .then(res => res.json())
             .then((data) => setPets(data));
 
-            fetch('http://localhost:5000/pets').then(res=>res.json())
+            fetch('https://petzeno-server.vercel.app/pets').then(res=>res.json())
             .then((data) =>setDataSpecies(data))
             
 

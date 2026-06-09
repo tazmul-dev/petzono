@@ -18,7 +18,7 @@ const addpet = () => {
         const petData = Object.fromEntries(formData.entries())
         // console.log(petData)
         
-        const res = await fetch('http://localhost:5000/pets', {
+        const res = await fetch('https://petzeno-server.vercel.app/pets', {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'

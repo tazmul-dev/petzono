@@ -9,21 +9,21 @@ const RequestedModal = ({petId}) => {
    const [requestData, setRequest] = useState([])
    useEffect(()=>{
      if (!petId) return;
-    fetch(`http://localhost:5000/showRequest/${petId}`)
+    fetch(`https://petzeno-server.vercel.app/showRequest/${petId}`)
     .then((res)=>res.json())
     .then((data)=>setRequest(data))
    },[petId])
 //    console.log(requestData)
     const handalAdopt = async(id)=>{
     //   console.log("adopt")
-      const res = await fetch(`http://localhost:5000/requestAddopt/${id}`,{
+      const res = await fetch(`https://petzeno-server.vercel.app/requestAddopt/${id}`,{
         method:'PATCH'
       })
       const data = await res.json()
     //   console.log(data.success)
     if (data.success) {
   const res = await fetch(
-    `http://localhost:5000/showRequest/${petId}`
+    `https://petzeno-server.vercel.app/showRequest/${petId}`
   );
 
   const updatedData = await res.json();
@@ -33,12 +33,12 @@ const RequestedModal = ({petId}) => {
     }
 
     const handaleReject = async(id)=>{
-         const res = await fetch(`http://localhost:5000/requestReject/${id}`,{
+         const res = await fetch(`https://petzeno-server.vercel.app/requestReject/${id}`,{
         method:'PATCH'
       })
         if (data.success) {
   const res = await fetch(
-    `http://localhost:5000/showRequest/${petId}`
+    `https://petzeno-server.vercel.app/showRequest/${petId}`
   );
 
   const updatedData = await res.json();
@@ -59,11 +59,13 @@ const RequestedModal = ({petId}) => {
                 <Rocket className="size-5" />
               </Modal.Icon> */}
 
-                            <Modal.Heading>Welcome to HeroUI</Modal.Heading>
+                           
                         </Modal.Header>
                         <Modal.Body>
+                          
                                 {requestData.map(data =>{
-                                    console.log(data)
+                                    // console.log(data)
+                                    
                                     return <div key={data?._id} className="my-4 rounded-[2rem] border border-orange-100 bg-white p-6 shadow-md">
 
                                 {/* Title */}
